@@ -7,16 +7,19 @@ export function mouseTrap(Base){
             super(props);
             this.__mousetrapBindings = [];
             this.Mousetrap = require('mousetrap');
+
+            const Mousetrap = this.Mousetrap;
+            require('mousetrap-global-bind');
         }
 
         bindShortcut (key, callback) {
-            this.Mousetrap.bind(key, callback);
-            this.__mousetrapBindings.push(key);
+          this.Mousetrap.bind(key, callback);
+          this.__mousetrapBindings.push(key);
         }
 
         bindGlobalShortcut (key, callback) {
-            this.Mousetrap.bindGlobal(key, callback);
-            this.__mousetrapBindings.push(key);
+          this.Mousetrap.bindGlobal(key, callback);
+          this.__mousetrapBindings.push(key);
         }
 
         unbindShortcut (key) {
@@ -48,6 +51,7 @@ export function mouseTrap(Base){
             return <Base
                 {...this.props}
                 bindShortcut={this.bindShortcut.bind(this)}
+                bindGlobalShortcut={this.bindGlobalShortcut.bind(this)}
                 unbindShortcut={this.unbindShortcut.bind(this)} />
         }
     };
