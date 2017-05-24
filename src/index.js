@@ -14,6 +14,11 @@ export function mouseTrap(Base){
             this.__mousetrapBindings.push(key);
         }
 
+        bindGlobalShortcut (key, callback) {
+            this.Mousetrap.bindGlobal(key, callback);
+            this.__mousetrapBindings.push(key);
+        }
+
         unbindShortcut (key) {
             var index = this.__mousetrapBindings.indexOf(key);
 
